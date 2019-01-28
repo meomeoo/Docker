@@ -31,7 +31,7 @@ ontainer không giống như VMs, Container không cung cấp sự ảo hóa v�
 Các bạn có thể thấy các gói container chỉ là một user space bao gồm ứng dụng, system binaries và libraries mà không cần guest OS hoặc ảo hóa phần cứng như VMs.  Đây là cái mà làm cho các container nhẹ hơn (lightweight). Các container sẽ chạy trên công nghệ cụ thể ở đây là Docker Engine.
 theo em: contaier là một không gian ảo được tạo ra để giả lập các môi trường đủ để cho người dùng làm việc mà không cần phải yêu cầu cung cấp ảo hóa phần cứng (RAM,CPU, OS như một máy tính thật) nên hiển nhiên nó sẽ nhẽ hơn, bớt phức tạp về mức độ áo hóa.
 ## 3.2 Các công nghệ ảo hóa:
-###3.2.1 Có 2 loại công nghệ ảo hóa:
+### 3.2.1 Có 2 loại công nghệ ảo hóa:
    * *Ảo hóa dựa trên phần cứng: Là công nghê có tác động trừu tượng hóa tài nguyên vật lí của máy chủ ví dụ: Phân chia chu kì hoạt động CPU, phân chia RAM,.. để cung cấp các CPU ảo, RAM ảo,.. cho cái máy ảo, cloud,.. hay việc tạo nên những switching, Vlans, NAT-ing,. ở Network Virtualization. Ví dụ:Hypervisor,.*
    * *Ảo hóa dựa trên OS: Không có tác động ảo hóa ở cấp độ phần cứng, chỉ ảo hóa ở cấp độ OS tức là kĩ thuật ảo hoạt động trên một OS có sẵn.Ví dụ: Docker,.*
 ## +Hypervisor(tạo các VM)
