@@ -1,5 +1,5 @@
 # 1.Virtualization
- * Virtualization là một kĩ thuật giúp ta tạo các tài nguyên ảo (máy ảo, RAM ảo, CPU ảo, vùng làm việc ảo, cloud,.. )từ một tài nguyên của một máy chủ ban đầu (có thể là tạo các tài nguyên ảo trực tiếp dựa trên phần cứng hoặc tạo trên một OS có sẵn). Một kĩ thuật giúp ta tăng khả năng thực hiện nhiều mục đích hơn mà không cần tăng thêm về tài nguyên vật lí có sẵn. Virtualization ẩn đi các đặc điểm vật lí của tài nguyên tính toán với người sử dụng của chúng và người sử dụng cuối.*
+ * *Virtualization là một kĩ thuật giúp ta tạo các tài nguyên ảo (máy ảo, RAM ảo, CPU ảo, vùng làm việc ảo, cloud,.. )từ một tài nguyên của một máy chủ ban đầu (có thể là tạo các tài nguyên ảo trực tiếp dựa trên phần cứng hoặc tạo trên một OS có sẵn). Một kĩ thuật giúp ta tăng khả năng thực hiện nhiều mục đích hơn mà không cần tăng thêm về tài nguyên vật lí có sẵn. Virtualization ẩn đi các đặc điểm vật lí của tài nguyên tính toán với người sử dụng của chúng và người sử dụng cuối.*
 
 Virtualization thường là:
    * Tạo ra nhiều tài nguyên ảo (OS, APP, VM, container,.) từ mội tài nguyên vật lí (1 máy tính, 1 máy chủ..).
