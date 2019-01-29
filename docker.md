@@ -29,7 +29,7 @@ là một trương trình có vai trò và tác dụng như máy tính thật. C
 ontainer không giống như VMs, Container không cung cấp sự ảo hóa về phần cứng. Một Container cung cấp ảo hóa ở cấp hệ điều hành bằng một khái niệm trừu tượng là “user space”. Sự khác nhau lớn nhất của Container và VMs là Container có thể chia sẻ host system’s kernel với các container khác. 
 <img src="https://techtalk.vn/techtalk_blog/public/picture/img/vinhle/1510815613.png">
 Các bạn có thể thấy các gói container chỉ là một user space bao gồm ứng dụng, system binaries và libraries mà không cần guest OS hoặc ảo hóa phần cứng như VMs.  Đây là cái mà làm cho các container nhẹ hơn (lightweight). Các container sẽ chạy trên công nghệ cụ thể ở đây là Docker Engine.
-theo em: contaier là một không gian ảo được tạo ra để giả lập các môi trường đủ để cho người dùng làm việc mà không cần phải yêu cầu cung cấp ảo hóa phần cứng (RAM,CPU, OS như một máy tính thật) nên hiển nhiên nó sẽ nhẽ hơn, bớt phức tạp về mức độ áo hóa.
+theo em: container là một không gian ảo được tạo ra để giả lập các môi trường đủ để cho người dùng làm việc mà không cần phải yêu cầu cung cấp ảo hóa phần cứng (RAM,CPU, OS như một máy tính thật) nên hiển nhiên nó sẽ nhẽ hơn, bớt phức tạp về mức độ áo hóa.
 ## 3.2 Các công nghệ ảo hóa:
 ### 3.2.1 Có 2 loại công nghệ ảo hóa:
    * *Ảo hóa dựa trên phần cứng: Là công nghê có tác động trừu tượng hóa tài nguyên vật lí của máy chủ ví dụ: Phân chia chu kì hoạt động CPU, phân chia RAM,.. để cung cấp các CPU ảo, RAM ảo,.. cho cái máy ảo, cloud,.. hay việc tạo nên những switching, Vlans, NAT-ing,. ở Network Virtualization. Ví dụ:Hypervisor,.*
