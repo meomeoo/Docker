@@ -1,5 +1,5 @@
 # 1.Virtualization
- * *Virtualization là một kĩ thuật giúp ta tạo các tài nguyên ảo (máy ảo, RAM ảo, CPU ảo, vùng làm việc ảo, cloud,.. )từ một tài nguyên của một máy chủ ban đầu (có thể là tạo các tài nguyên ảo trực tiếp dựa trên phần cứng hoặc tạo trên một OS có sẵn). Một kĩ thuật giúp ta tăng khả năng thực hiện nhiều mục đích hơn mà không cần tăng thêm về tài nguyên vật lí có sẵn. Virtualization ẩn đi các đặc điểm vật lí của tài nguyên tính toán với người sử dụng của chúng và người sử dụng cuối.*
+ * *Virtualization là một kĩ thuật giúp ta tạo các tài nguyên ảo (máy ảo, RAM ảo, CPU ảo, vùng làm việc ảo, cloud,.. )từ một tài nguyên  (có thể là tạo các tài ban đầu nguyên ảo trực tiếp dựa trên phần cứng hoặc tạo trên một OS có sẵn). Một kĩ thuật giúp ta tăng khả năng thực hiện nhiều mục đích hơn mà không cần tăng thêm về tài nguyên vật lí có sẵn. Virtualization ẩn đi các đặc điểm vật lí của tài nguyên tính toán với người sử dụng của chúng và người sử dụng cuối.*
 
 Virtualization thường là:
    * Tạo ra nhiều tài nguyên ảo (OS, APP, VM, container,.) từ mội tài nguyên vật lí (1 máy tính, 1 máy chủ..).
@@ -10,7 +10,7 @@ Hiện nay thuật ngữ Virtualization đã được áp dụng rộng rãi tro
  * Server Virtualization: tạo nhiều máy chủ ảo(APP,OS) trên nền máy chủ thực, giúp tiết kiệm chi phí, thực hiện nhiều mục đích khác nhau mà không tốn thêm tài nguyên vật lý.
 <img src="https://www.tutorialspoint.com/virtualization2.0/images/server.jpg">
  * Client & Desktop Virtualization 
-Trong một công ty có 1 máy chủ lớn chứa dữ liệu cần đề nhân viên truy cập, giải pháp là tạo ra các desktop(ảo) như những những client mỏng cho từng bằng việc chia từ trung tâm dữ liệu ở máy chủ. Các nhận viên có thể truy cập dữ liệu sử dụng phần mềm ở máy chủ (tùy thuộc vào quyền được cấp.
+Trong một công ty có 1 máy chủ lớn chứa dữ liệu cần đề nhân viên truy cập, giải pháp là tạo ra các desktop(ảo) như những client cho từng bằng việc chia từ trung tâm dữ liệu ở máy chủ. Các nhân viên có thể truy cập dữ liệu sử dụng phần mềm ở máy chủ (tùy thuộc vào quyền được cấp.
 <img src="https://www.tutorialspoint.com/virtualization2.0/images/client.jpg">
 
  * Network Virtualization
@@ -52,9 +52,11 @@ hay còn gọi là Containers Virtualization , là phương pháp ảo hóa mớ
 # 4.Docker 
 Docker là một nền tảng cung cấp các containers. Là công nghệ ảo hóa dựa trên OS.
 Như đã giải thích Docker cung cấp các containers không tạo ra máy ảo.
+*Vì không cung cấp ảo hóa ở cấp độ phần cứng (không tạo tạo ra các CPU ảo, RAM ảo,.. -->> không có OS ảo) mà chỉ ảo hóa trên OS có sẵn tạo nên các không gian sử dụng ảo nên việc dùng docker sẽ nhẹ hơn nhiều so với việc ảo hóa để tạo một máy ảo mới (tạo máy ảo mới cần CPU ảo, RAM ảo,.. -->> sau đó lại phải cài hệ điều hành mới)*
  * Các khái niệm quan trọng liên quan:
    * Images:Hiểu nôm na là một khuôn mẫu để tạo một container. Thường thì image sẽ base trên 1 image khác với những tùy chỉnh thêm.Bạn có thể tự build một image riêng cho mình hoặc sử dụng những image được publish từ cộng đồng Docker Hub. Một image sẽ được build dựa trên những chỉ dẫn của Dockerfile.
-   * Containers: là một instance của một image. Bạn có thể create, start, stop, move or delete container dựa trên Docker API hoặc Docker CLI.
+   * Containers: là một instance của một image. Bạn có thể create, start, stop, move or delete 
+container dựa trên Docker API hoặc Docker CLI.
    * Registry (Docker Hub): là một kho chứa các image được publish bởi cộng đồng Docker. Nó giống như GitHub và bạn có thể tìm những image cần thiết và pull về sử dụng.
    * Docker Client: là một công cụ giúp người dùng giao tiếp với Docker host.
    * Docker Daemon: lắng nghe các yêu cầu từ Docker Client để quản lý các đối tượng như Container, Image, Network và Volumes. Các Docker Daemon cũng giao tiếp với nhau để quản lý các Docker Service.
