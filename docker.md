@@ -50,7 +50,7 @@ là phần mềm được thế kế để chạy trên một hề điều hành
 hay còn gọi là Containers Virtualization , là phương pháp ảo hóa mới cho phép nhân của hệ điều hành hỗ trợ nhiều instances (còn được gọi là container) dựa trên 1 hệ điều hành có sẵn cho nhiều users khác nhau. --> tạo, An toàn dùng chung 1 hệ điều hành. Ưu điểm của công nghệ này là bảo trì nhanh chóng nên được sử dụng nhiều trong lĩnh vực hosting. . công nghệ này chỉ tồn tại trên hệ điều hành Linux. VD: chroot, Docker,... (phần này em lấy của chị vì em tìm không thấy nó trên mạng -_-  và em xóa đoạn ở giữa và thay bằng mục container).
 
 # 4.Docker 
-Docker là một nền tảng cung cấp các containers. Là công nghệ ảo hóa dựa trên OS.
+*Docker là một nền tảng tạo và quản lí containers*. Là công nghệ ảo hóa dựa trên OS.
 Như đã giải thích Docker cung cấp các containers không tạo ra máy ảo.
 *Vì không cung cấp ảo hóa ở cấp độ phần cứng (không tạo tạo ra các CPU ảo, RAM ảo,.. -->> không có OS ảo) mà chỉ ảo hóa trên OS có sẵn tạo nên các không gian sử dụng ảo nên việc dùng docker sẽ nhẹ hơn nhiều so với việc ảo hóa để tạo một máy ảo mới (tạo máy ảo mới cần CPU ảo, RAM ảo,.. -->> sau đó lại phải cài hệ điều hành mới)*
  * Các khái niệm quan trọng liên quan:
