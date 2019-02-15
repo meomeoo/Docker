@@ -17,9 +17,9 @@ Nhưng một bài viết Posted on Tháng Bảy 3, 2018 nói răng: kể từ ph
 # Vấn đề mà Docker giải quyết
 * Sử dụng và cài đặt phần mềm là một vấn đề phức tập: ứng dựng hoạt động trên hệ điều nào, tài nguyên mà nó yêu cầu, các dụng khác mà nó phụ thuộc vào,.. 
 Ngày nay một ứng dụng không chỉ hoạt động riêng lẻ riêng mình nó mà nó còn cần nhiều thứ phụ thuộc đi kèm. Vì vậy trên một máy tính việc sử dụng, cài đặt, nâng cấp một phần mềm sẽ là một vấn đề phức tạp và rắc rối. 
-<img scr="/home/meomeo/Pictures/Screenshot from 2019-02-15 23-42-51.png">
+<img src="/home/meomeo/Pictures/Screenshot from 2019-02-15 23-42-51.png">
 và Docker giả quyết được vấn đề này với các container.
-<img scr="/home/meomeo/Pictures/Screenshot from 2019-02-15 23-45-27.png">
+<img src="/home/meomeo/Pictures/Screenshot from 2019-02-15 23-45-27.png">
 Docker tạo riêng cho từng ứng dụng những thứ nó cần để hoạt động độc lập mà không ảnh hưởng tới các ứng dụng khác. 
 
 * Một vấn đề khác của phần mềm đó chính là các các ứng dụng phụ thuộc của nó yêu cầu hoạt động trên những hệ điều hành nhất định và nó là một vấn đề lớn của người sử dụng phần mềm. Có thể có sự tương đồng (có thể hoặt động được) của một số ựng dụng phụ thuộc trên 2 hệ điều hành là Linux và Mac OS X, nhưng dùng những hệ điều hành tương tự trên Windown lại không được. Điều đó yêu cầu phải xây dựng lại toàn bộ những ứng dụng phụ thuộc của từng phiên bản để dành cho việc hoặt động trên WinDows, nhưng nó chỉ có thể khi những phụ thuộc được xây dựng có thể hoạt động trên WinDows.
@@ -28,12 +28,12 @@ Sự di động mà docker mang đến giải quyết nhiều vấn đề như: 
 *  Trong quyển Docker in Actions có viết "This new portability helps users in a few ways. First, it unlocks a whole world of soft-ware that was previously inaccessible." em không hiểu rõ nghĩ của câu này và lợi ích thứ nhất lắm.
 
 # Một số lệnh cơ bản 
-<img scr="/home/meomeo/Pictures/Screenshot from 2019-02-16 00-26-04.png">
+<img src="/home/meomeo/Pictures/Screenshot from 2019-02-16 00-26-04.png">
 Nhưng em chạy một số lệnh thì nó lại gặp lỗi.
-<img scr="/home/meomeo/Pictures/Screenshot from 2019-02-16 00-27-47.png">
+<img src="/home/meomeo/Pictures/Screenshot from 2019-02-16 00-27-47.png">
 Em sẽ tìm cách để xem sửa như nào huhu!
 # Grafana 
-<img scr="https://namlee.net/wp-content/uploads/2018/07/huong-dan-cai-dat-he-thong-monitor-voi-grafana-influxdb-va-telegraf-tren-centos-7.png">
+<img src="https://namlee.net/wp-content/uploads/2018/07/huong-dan-cai-dat-he-thong-monitor-voi-grafana-influxdb-va-telegraf-tren-centos-7.png">
 Grafana là một bộ mã nguồn mở sử dụng trong việc phân tích các dữ liệu thu thập được từ server và hiện thị một các trực quan dữ liệu thu thập được ở nhiều dạng khác nhau.
 
 
