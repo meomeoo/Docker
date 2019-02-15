@@ -12,7 +12,7 @@ Docker for Windows yêu cầu OS là Windows 10 bật Hyper-V (không phải má
 Docker Toolbox có thể cài trên bất kỳ OS Windows nào do dựa trên VirtualBox (bị giới hạn bởi các thiết lập mặc định của VirtualBox)
 Về cơ bản em thấy Docker hoạt động trên window vẫn cần những công cụ máy ảo để có thể chạy được nên em vẫn hiểu nó là không dành do Window (hay không chạy trên nền thuần túy của window).
 Đây là các bài viết em tham khảo được post vào 2 thời điểm 17/11/2016 và Jun 30th, 2017 8:16 AMe.
-Nhưng một bài viết Posted on Tháng Bảy 3, 2018 nói răng: kể từ phiên bản Windows 10 64bit Pro, Enterprise and Education (1607 Anniversary Update, Build 14393 or later) chúng ta có thể cài đặt docker một cách dễ dàng như các phần mềm khác. Nên -_- em nghĩ giơ Docker là cho cả linux và windows.
+Nhưng một bài viết Posted on Tháng Bảy 3, 2018 nói răng: kể từ phiên bản Windows 10 64bit Pro, Enterprise and Education (1607 Anniversary Update, Build 14393 or later) chúng ta có thể cài đặt docker một cách dễ dàng như các phần mềm khác. Nên -_- em nghĩ b Docker là cho cả linux và windows.
 
 # Vấn đề mà Docker giải quyết
 * Sử dụng và cài đặt phần mềm là một vấn đề phức tập: ứng dựng hoạt động trên hệ điều nào, tài nguyên mà nó yêu cầu, các dụng khác mà nó phụ thuộc vào,.. 
