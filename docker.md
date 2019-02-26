@@ -51,24 +51,25 @@ Ctrl + P sau đó Ctrl + Q : deatch khỏi cửa sổ thực thi trong cotainer,
 docker attach { container_id }: chui lại vào container bạn vừa detach, (chú ý: phải gõ enter 2 lần)  
 
 5. Run mysql server image và tạo, sửa xóa database trong container.  
-> sudo docker pull mysql/mysql-server:latest  
+ 'sudo docker pull mysql/mysql-server:latest' 
+
 Có tác dụng pull image mysql-server với phiên bản mới nhất về (tag=latest)  
 <img src="https://i.imgur.com/08m80VD.png"> 
-> sudo docker run --name=hihi -d mysql/mysql-server:latest  
-Chạy và đặt tên (tên container là 'hihi') một container dựa trên image vừa tải   
--d là tùy chọn để chạy container *dưới nền* ( chạy ẩn - không thể hiện gì trên màn hình)  
+`sudo docker run --name=hihi -d mysql/mysql-server:latest`                
+Chạy và đặt tên (tên container là 'hihi') một container dựa trên image vừa tải     
+-d là tùy chọn để chạy container *dưới nền* ( chạy ẩn - không thể hiện gì trên màn hình)   
 <img src="https://i.imgur.com/Xg881kR.png">  
-> docker logs hihi 2>&1 | grep GENERATED  
-Nhận mật khẩu mặc định cho root user  
-> sudo docker exec -it hihi mysql -uroot -p  
-Kết nối tới mysql server từ bên trong container chứa nó. Cụ thể là di chuyển đến mysql client.  
-> mysql> ALTER USER 'root'@'localhost' IDENTIFIED BY 'conmeocon';  
-Thay đổi mật khẩu cho root user  
+`docker logs hihi 2>&1 | grep GENERATED`   
+Nhận mật khẩu mặc định cho root user   
+`sudo docker exec -it hihi mysql -uroot -p`   
+Kết nối tới mysql server từ bên trong container chứa nó. Cụ thể là di chuyển đến mysql client.    
+`mysql> ALTER USER 'root'@'localhost' IDENTIFIED BY 'conmeocon';`  
+Thay đổi mật khẩu cho root user   
 <img src="https://i.imgur.com/iNkB55K.png">  
-> mysql> CREATE DATABASE pets;  
+`mysql> CREATE DATABASE pets;`  
 Tạo database mới là: pets  
 <img src="https://i.imgur.com/ush5vVG.png">
-> mysql> CREATE TABLE cats..;  
+`mysql> CREATE TABLE cats..;`  
 Tạo bảng cats của pets   
 Và một số tao tác với bảng.  
 <img src="https://i.imgur.com/Xi2hjz8.png">
@@ -79,7 +80,7 @@ Và một số tao tác với bảng.
 
 
 # Grafana 
-> sudo docker run -d -p 3000:3000 grafana/grafana  
+`sudo docker run -d -p 3000:3000 grafana/grafana`  
 Lệnh dùng để run 1 container grafana dựa dên image (được pull từ docker hub về)  
 <img src="https://i.imgur.com/6uQpC72.png">
 
