@@ -1,41 +1,92 @@
-# Đôi điều lịch sử
-Vitualization là công nghệ có trước containerlization.
-Ban đầu Vitualization giải quyết được các vấn đề đa năng hóa khả năng của một máy tính mà không cần thêm tài nguyên vật lí. Nhưng sau khi công nghê containerlization xuất hiện nó giải quyết được các vấn mà Vitualization đang làm nhưng nó tốt hơn Vitualization ở những điểm như: Tận dụng tối đa tài nguyên vật lí, giảm thiểu thời gian về mặt khởi động, shutdown,..
-Và thế là nhưng một lẽ tự nhiên :))  công nghệ containerlization ngày càng được ưa chuộng.
-Thủa ban đầu việc dùng công nghệ containerlization để tạo ra các container khá là phức tập nên không khả thi với các tổ chức nhỏ hay người dùng cá nhân. Khi đó công nghệ này chỉ khả thi với các ông lớn ngành công nghệ nhưng cách họ làm thì đương nhiên được private source code. Và buồn thay công nghệ containerlization khi đó chưa được áp dụng rộng rãi.
-Nhưng rồi đến một ngày nọ có một công ty đã public source code của họ về công nghệ này và họ tung ra sản phầm mang tên là Docker và nhận được nhiều sự chú ý, sau đó công ty cũng đổi tên thành Docker luôn.
-Vì là công nghê containerlization nên nó yêu cầu can thiệp vào phần lõi, nhân kernel của hệ điều hành và đương nhiên linux - một OS mã nguồn mở là phương án khả thi để ấp dụng công nghệ này và đó là tại sao ban đầu Docker được viết cho linux. và Microsoft cũng có sản phẩm tương tự của mình đó là Windows Container.
-Đến khi thấy Docker hay quá, Microsoft ngỏ lời, thế là công ty Docker và công ty Microsoft hợp tác với nhau nhưng có vẻ chưa khả quan lắm bởi vì nhân Windows có nhưng thứ không public được (bản quyền mà ). Theo như em tìm hiểu: 
-Docker trên Windows có 2 phiên bản:
-
-Docker for Windows yêu cầu OS là Windows 10 bật Hyper-V (không phải máy nào cũng hỗ trợ và chưa ổn định)
-Docker Toolbox có thể cài trên bất kỳ OS Windows nào do dựa trên VirtualBox (bị giới hạn bởi các thiết lập mặc định của VirtualBox)
-Về cơ bản em thấy Docker hoạt động trên window vẫn cần những công cụ máy ảo để có thể chạy được nên em vẫn hiểu nó là không dành do Window (hay không chạy trên nền thuần túy của window).
-Đây là các bài viết em tham khảo được post vào 2 thời điểm 17/11/2016 và Jun 30th, 2017 8:16 AMe.
-Nhưng một bài viết Posted on Tháng Bảy 3, 2018 nói răng: kể từ phiên bản Windows 10 64bit Pro, Enterprise and Education (1607 Anniversary Update, Build 14393 or later) chúng ta có thể cài đặt docker một cách dễ dàng như các phần mềm khác. Nên -_- em nghĩ b Docker là cho cả linux và windows.
 
 # Vấn đề mà Docker giải quyết
 * Sử dụng và cài đặt phần mềm là một vấn đề phức tập: ứng dựng hoạt động trên hệ điều nào, tài nguyên mà nó yêu cầu, các dụng khác mà nó phụ thuộc vào,.. 
 Ngày nay một ứng dụng không chỉ hoạt động riêng lẻ riêng mình nó mà nó còn cần nhiều thứ phụ thuộc đi kèm. Vì vậy trên một máy tính việc sử dụng, cài đặt, nâng cấp một phần mềm sẽ là một vấn đề phức tạp và rắc rối. 
-<img src="https://lh3.googleusercontent.com/t6muGCjD5y7irocInzdA8ITKhL2a6uX2zNQKUCXnvBO-75ernEElZwLJXWGPA1nirQXoLNNZ3fYW-MaBFClJ1gDJmYRIpnmw129ujXpoUm1rYG38oqgHBLnGH-1MmRE0ckdn_8jjdb_JRKsg4v9UIziN5TkbVYVfEeghtvxaQZgH_N1p4_6QPwg74hXAAEvQmo91rl4QQxUi8XfvwjTqiLFWLAnBgHJaBnQRrlND-JAiBauXHK67PPUaf9giDvjsFXMK19KxNpsae_luMNROwpLDPYfADYA9jMqeZb6QO-djafYPn2UPAT1nIhBBgzEg7-bIj7gTWtECS3IeDSHWl7To5RVmEF6pZVnkiMlsLX16s6Bq-76ilXhLPBm4eHrkA3pdVOUWU5QsQqzhu0ipdCR6VAUxBrsrXuQnxHYvRxh_FcorSzYKchquSTTzU8X_T5qIEYHqDmdp06ysByrUJurTlLeLrstSUx-bxUn_ZcenhiEdP0EqZOW6bF2LdEx2YNyN8j5wBPza5eX_hfNOuN05LLsgTXcx70UMXxpJO8ObnixM7GMU7DwF08N0O_P_-gnS8GIJ0lhSu7lqcEspJPbkjJJheqBasfiwbTEsrdPr3bY7HpHC9iYrhQP33N3TOBBaT60yub2fhkI8hUVhyvs2lnFX2O8=w506-h248-no">
+<img src="https://i.imgur.com/j5UAM6t.png">
 và Docker giả quyết được vấn đề này với các container.
-<img src="https://lh3.googleusercontent.com/-XKTwvPN3f0mCq0T3ZxZDq-cN3u7CPEHTzZuTA-Ogalr1mxt0avSavAarRYfvQNlxUGeo0K0TVxqETBPf5Qq2hTq1zCqgeCzrQA_AdIrbEavZB9qrgUFMhzE3cUYgikebf0YzTJkbiJCQ7yEncoVTPjloKCnuC347X2yCgfu6LdW10lGGPZ_GKtZEbZ9AWRCNWszIGSMG8w8XN-v_4ZCBsDBipPci661Xi01Lt12t_xQhVrij3QLL6zv6JDsSQ9VdAwpeNPssx-7XlPLPJBPjAVRvYpFZhCsveIKPFnxomfR-lSBS8ifgRKBNhBxkRgysGVMMJ05Ay0y3ls6byRZrg0OGqEA_Zvgup8Kmc7n_8HY83X2cLRCqzXt6_iM62mqbJpK2652X_IdQaHhSbmax7BHTYcvabebHt3O7bIaLZyHpAzmTf06mq8UVhvQTyab5Z0gZLBgmApJVjhayh5DbzZsUA9ut5raWwawM4ps9bLFEbgr6jPecpeETEw7P9ej-mSfpZLKmxCj6oOKzOI7buxlDXHNZTqlq_kfEFxISo5ET4vwE45j3MxTP1UF7gC1EdEZ38vrHSLoOd-693E9z1liEQXQhshsqiBeh4nO-nRqpFFsvGSbc2bhtI6ciXmcvRQlmZYe5UeZui0BSWxmAwqgQfZpBtw=w847-h343-no">
+<img src="https://i.imgur.com/JHXejrZ.png">
 Docker tạo riêng cho từng ứng dụng những thứ nó cần để hoạt động độc lập mà không ảnh hưởng tới các ứng dụng khác. 
 
-* Một vấn đề khác của phần mềm đó chính là các các ứng dụng phụ thuộc của nó yêu cầu hoạt động trên những hệ điều hành nhất định và nó là một vấn đề lớn của người sử dụng phần mềm. Có thể có sự tương đồng (có thể hoặt động được) của một số ựng dụng phụ thuộc trên 2 hệ điều hành là Linux và Mac OS X, nhưng dùng những hệ điều hành tương tự trên Windown lại không được. Điều đó yêu cầu phải xây dựng lại toàn bộ những ứng dụng phụ thuộc của từng phiên bản để dành cho việc hoặt động trên WinDows, nhưng nó chỉ có thể khi những phụ thuộc được xây dựng có thể hoạt động trên WinDows.
-*Như vậy nếu hoạt động trên Windows hoặc MAC OS X chúng ta chỉ cần chạy một máy ảo để chạy Docker sau đó dùng docker để tạo ra các container -> chi phí chạy máy chủ được cố định trong khi đó chúng ta có thể tăng số container tạo được.*(phần này em không rõ có đúng không, em nghĩ cái này đúng với các bản window trước bản 1607 ).
-Sự di động mà docker mang đến giải quyết nhiều vấn đề như: chạy những phần mềm như nhau trên bất kì hệ thống nào, tạo ra một môi trường hoạt động thuần nhất trên nhiều hệ thống máy tính, những người bảo trì phần mềm, những nhà phát triển có thể tập chung viết phần mềm với chỉ một bộ ứng dụng phụ thuộc (mà không cần quan tâm nó có thể hoạt động được trên các hệ thống khác nhau hay không,...
-*  Trong quyển Docker in Actions có viết "This new portability helps users in a few ways. First, it unlocks a whole world of soft-ware that was previously inaccessible." em không hiểu rõ nghĩ của câu này và lợi ích thứ nhất lắm.
+* Các phần mềm phụ thuộc của một ứng dụng đôi khi yêu cầu hoạt động trên những hoạt động nhất định và môi trường làm việc hiện tại lại không đáp ứng được nhu cầu đó
+
+  Tính di động mà docker mang đến giải quyết nhiều vấn đề như: chạy những phần mềm như nhau trên bất kì hệ thống nào, tạo ra một môi trường hoạt động thuần nhất trên nhiều hệ thống máy tính, những người bảo trì phần mềm, những nhà phát triển có thể tập chung viết phần mềm với chỉ một bộ ứng dụng phụ thuộc (mà không cần quan tâm nó có thể hoạt động được trên các hệ thống khác nhau hay không,...
 
 # Một số lệnh cơ bản 
-<img src="https://lh3.googleusercontent.com/z8n9lPP-eMByvL-VH7rx9ol1oaXoNlOQ_du16GDVNrFTfD-m-MoyQ-K3BP4ZSiBWM2MyrO41ufKP5LYXOpTXiH8nuD0ISr81oPTJgMEBtIcIoMSqxtUB6V4YfYBFlrmccI8h-H-Tt0BtSb90XjVumNbXtn0s-A85Ag_jhldbqf-zGNi4vsjMMsv_E9apLFHc7PBIJSy57plkJNLUM-v3X2gRDOQF0V1Bd87KXEuASq8dfD9UczJlPVsL5ZVVXtb7-UD547zNRRiM08krtjc-IXinVRyTqZw0UovrEDews-_ezcAAzdbqMcYXLECAb6GS3dbvpzEGOLfvnpQupEFx_xZ-R2T6jmEgzXFiOs6FLhEcvH2gpYhbkSpGMTFXJbZBaSNidwmBFmqRXGNtRG5IcgbogR-JCFC-NPFicN8m6NR4_c5yhRWNp3CTXy2zEQ_czAdRT1YzbHM5QbzkBaUS6BS5AR7kVWblJcit_PTwbjS_TD4hoIKWoPOGrgX-fUHsL5raBEgBwFuJN9gCOocf5xdXUQSzjAToMipnrqyey2B4uNlNcgUTq6lDmcsnoIV_HJyWkA-DbyMpUIRh7p3qYsKMqXCVkhOXI0EzcXbvvVgAFEZpKkxMjkhBNPvfJAV9JMHphwFDvkwLHkBbjH6TRt12yuyTq6s=w786-h525-no">
-Nhưng em chạy một số lệnh thì nó lại gặp lỗi.
-<img src="https://lh3.googleusercontent.com/tD4bdsGfnH8Fy053FF0Mu6pIP4VU5YjX9UwFHw4s4Kghq2YcbXUstEkth53EK6sYRSkjLZx5iws8dt2Ke9T1aWckC_GE_Pm50fCaIFp7Ayvt_MQwr7p1IXNBhiQ6LoN7ZLv-Ckkw8uPQBSvmNsRo_lzO1viDBe2eFMIzQ1pwFEhVAAFTUE0VekhZojNlh7yxiWFQQH3n-SqrNWH1OJ5OFgUJRqnAxwB-0Bt6C5h_d0S_3tWJb3Ix5Hczce106j6SDmea2dN4PUyhiLvKzPRo7OiVhhHW_0shzKu7Q9MtTDj-VxCEAZM41CNzoRlYfcyyaFTgdO6sodOxYYlABtV4rZ9QEqAh_fb84Rbig_YfQ1Nm-lzOWlX3rT_T32QcMX8cHtoefTtPZw9lE2T9C-hnlJyNDsIKLvsRCYn6XmMDJMCvMk65esOA6ef2KGNMkAAVaPWe4D3zsX-Wj8tpSE4HJ-BEBkwKVuQqPn19K5B8RSQ-JKtrA1CXq0E91rubH0gLJ39RTsNaZdXZ6hB6Z2kLIBvuLneAjzKaceiK5jIJhsX12YJMXrag5sJisI-A4-IXTSORaCu33ENFS2Ni3151VV3SSF5b4Z5_gqcb8Bdt6uiedffUxnkOPg7Ze7UkY3x7gZi9nEv97B3rnLIYkXgbLS4nCSjBlC0=w963-h204-no">
-Em sẽ tìm cách để xem sửa như nào huhu!
+1. Xem thông tin và liệt kê các container và image 
+* docker version: xem phiên bản docker
+* docker info: xem thông tin chi tiết cơ bản của phiên bản docker
+* docker ps: Liệt kê các container đang chạy
+* docker ps -a : hiển thị các container đang chạy và đã tắt
+* docker ps -s: giống docker ps tuy nhiên nó còn hiển thị thêm 1 field là dung lượng container được tạo ra
+* docker images: xem các image đã cài đặt
+* docker network ls: Xem các loại network đang có trong docker
+* docker inspect { container_id }: Xem chi tiết thông tin của container được tạo ra
+* docker network inspect bridge: Xem các ip của container
+* docker inspect { container_id || container_name } | grep -C2 Binds: Xem các volume trong container
+* docker logs { container_id }: xem lịch sử container  
+2. Xóa 1 container, images:
+* docker rm <id hoặc Name>:  Xóa 1 container
+* docker rm –f <id hoặc Name>: Giống lệnh trên nhưng xóa được cả container đang chạy (f ó force)
+* docker rm $(docker ps -a -q): xóa toàn bộ các container đang tồn tại
+* docker kill <id hoặc Name>: Tắt 1 container
+* docker rmi <id hoặc Name>: Xóa 1 image
+* docker rmi –f <id hoặc Name>: Xóa 1 image kể cả khi đang chạy
+3. Bật, chạy container
+* docker start <id hoặc Name>: Star 1 docker container
+* docker stop <id hoặc Name> : Dừng lại container được chỉ định với id hoặc tên đang chạy
+* docker stop $(docker ps –a –q): Dừng tất cả các container đang chạy
+* docker exec –it <id hoặc Name> /bin/bash: start container đã bị tắt (lệnh xem container bị tắt ở trên)
+* docker run --name {container_name} -p {host_port}:{container_port} -v {/host_path}:{/container_path} -it {image_name} /bin/bas.
+4.   Tìm hiểu chi tiết lệnh docker run ...
+    - Với lệnh trên docker sẽ tạo 1 cotainer từ image có sẵn và chạy với tùy chọn cổng với volume    
+      (chú ý: mỗi lần run là tương đương với việc tạo ra 1 container).
+      Với các tùy chọn như sau.
+–it chỉ định image sử dụng (nếu image ko có ẵn nó sẽ tự động pull về, câu lệnh này ó -i -t). image ko chỉ định được nhiều chỉ chỉ định được duy nhất 1 image khi tạo container.
+-i (-interactive): giữ cho stdin mở kể cả khi không attach
+-t (-tty ): Allocate a pseudo-TTY. Ý nghĩa của nó là cho phép phân bổ 1 giả lệnh tty (tty là 1 khái niệm dòng lệnh tương tự như shell command trong linux và các hệ điều hành unix khác, nó giúp ta nhập các dòng lệnh tương tác hoặc chạy 1 kịch bản ‘script’. Đích đến của nó là một chương trình hoặc máy in).
+-it hay –ti trong docker giúp ta mở cửa số dòng lệnh stdin và tạo 1 tty giả lập để cho người dùng (chính là ta) sử dụng và tương tác với môi trường docker
+-d (-detach): chạy ứng dụng dưới chế độ nền. Nghĩa là khi bạn start một container với cờ này thì ứng dụng sẽ không chạy thằng vào dòng lệnh bên trong container mà nó sẽ chạy ngầm và trả lại cho bạn một container Id. Để làm việc với container mà bạn chạy dưới cờ -d thì bạn sử dụng docker attach hoặc docker exec … như ở trên đã đề cập
+exit: thoát khoải môi trường ảo container đang chạy
+Ctrl + P sau đó Ctrl + Q : deatch khỏi cửa sổ thực thi trong cotainer, nó khác exit là nó không thoát hoàn toàn ứng dụng mà các ứng dụng bạn đang chạy vẫn chạy bình thường
+docker attach { container_id }: chui lại vào container bạn vừa detach, (chú ý: phải gõ enter 2 lần)
+
+5. Run mysql server image và tạo, sửa xóa database trong container.
+> sudo docker pull mysql/mysql-server:latest
+Có tác dụng pull image mysql-server với phiên bản mới nhất về (tag=latest)
+<img src="https://i.imgur.com/08m80VD.png">
+> sudo docker run --name=hihi -d mysql/mysql-server:latest
+Chạy và đặt tên (tên container là 'hihi') một container dựa trên image vừa tải 
+-d là tùy chọn để chạy container *dưới nền* ( chạy ẩn - không thể hiện gì trên màn hình)  
+<img src="https://i.imgur.com/Xg881kR.png">
+> docker logs hihi 2>&1 | grep GENERATED
+Nhận mật khẩu mặc định cho root user
+> sudo docker exec -it hihi mysql -uroot -p
+Kết nối tới mysql server từ bên trong container chứa nó. Cụ thể là di chuyển đến mysql client.
+> mysql> ALTER USER 'root'@'localhost' IDENTIFIED BY 'conmeocon';
+Thay đổi mật khẩu cho root user
+<img src="https://i.imgur.com/iNkB55K.png">
+> mysql> CREATE DATABASE pets;
+Tạo database mới là: pets
+<img src="https://i.imgur.com/ush5vVG.png">
+> mysql> CREATE TABLE cats..;
+Tạo bảng cats của pets 
+Và một số tao tác với bảng.
+<img src="https://i.imgur.com/Xi2hjz8.png">
+<img src="https://i.imgur.com/ahl5UIt.png">
+<img src="https://i.imgur.com/ec6ath2.png">
+<img src="https://i.imgur.com/e8vRNar.png">
+
+
+
 # Grafana 
+> sudo docker run -d -p 3000:3000 grafana/grafana
+Lệnh dùng để run 1 container grafana dựa dên image (được pull từ docker hub về)
+<img src="https://i.imgur.com/6uQpC72.png">
+
 <img src="https://namlee.net/wp-content/uploads/2018/07/huong-dan-cai-dat-he-thong-monitor-voi-grafana-influxdb-va-telegraf-tren-centos-7.png">
-Grafana là một bộ mã nguồn mở sử dụng trong việc phân tích các dữ liệu thu thập được từ server và hiện thị một các trực quan dữ liệu thu thập được ở nhiều dạng khác nhau.
+Grafana là một Platform mã nguồn mở sử dụng trong việc phân tích các dữ liệu thu thập được từ server và hiện thị một các trực quan dữ liệu thu thập được ở nhiều dạng khác nhau.
+Influxdb sử dụng cho time-series database và Grafana cho việc visualizing metrics.
+<img src="https://s3-ap-southeast-1.amazonaws.com/kipalog.com/1kgrulwe43_cluster.png">
 
 
-"the web server will be available only to other programs on your compute" câu này có nghĩ là dùng web browser chỉ truy cập cập được vào các chương trình có trên máy tính của mình. *em hiểu có đúng không vậy mama*
 
