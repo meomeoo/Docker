@@ -51,8 +51,8 @@ Ctrl + P sau đó Ctrl + Q : deatch khỏi cửa sổ thực thi trong cotainer,
 docker attach { container_id }: chui lại vào container bạn vừa detach, (chú ý: phải gõ enter 2 lần)  
 
 5. Run mysql server image và tạo, sửa xóa database trong container.  
- 'sudo docker pull mysql/mysql-server:latest' 
 
+`sudo docker pull mysql/mysql-server:latest`   
 Có tác dụng pull image mysql-server với phiên bản mới nhất về (tag=latest)  
 <img src="https://i.imgur.com/08m80VD.png"> 
 `sudo docker run --name=hihi -d mysql/mysql-server:latest`                
