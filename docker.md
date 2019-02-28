@@ -7,9 +7,8 @@ và Docker giả quyết được vấn đề này với các container.
 <img src="https://i.imgur.com/JHXejrZ.png">
 Docker tạo riêng cho từng ứng dụng những thứ nó cần để hoạt động độc lập mà không ảnh hưởng tới các ứng dụng khác. 
 
-* Các phần mềm phụ thuộc của một ứng dụng đôi khi yêu cầu hoạt động trên những hoạt động nhất định và môi trường làm việc hiện tại lại không đáp ứng được nhu cầu đó
-
-  Tính di động mà docker mang đến giải quyết nhiều vấn đề như: chạy những phần mềm như nhau trên bất kì hệ thống nào, tạo ra một môi trường hoạt động thuần nhất trên nhiều hệ thống máy tính, những người bảo trì phần mềm, những nhà phát triển có thể tập chung viết phần mềm với chỉ một bộ ứng dụng phụ thuộc (mà không cần quan tâm nó có thể hoạt động được trên các hệ thống khác nhau hay không,...
+* Các phần mềm phụ thuộc của một ứng dụng đôi khi yêu cầu hoạt động trên những OS nhất định và môi trường làm việc hiện tại lại không đáp ứng được nhu cầu đó
+  Tính di động mà docker mang đến giải quyết được vấn đề đó tạo ra một môi trường hoạt động thuần nhất trên nhiều hệ thống máy tính, giúp những người bảo trì phần mềm, những nhà phát triển có thể tập chung phát triển phần mềm mà không cần quan tâm nó có thể hoạt động được trên các hệ thống khác nhau hay không,...
 
 # Một số lệnh cơ bản 
 1. Xem thông tin và liệt kê các container và image 
