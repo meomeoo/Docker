@@ -44,19 +44,32 @@ với file yml để thiết lập các service như hình:
 
 
 * `docker-compose up` để khởi chạy toàn bộ service thêm flag `-d` để chạy các service bên trong background
-<img src = "https://i.imgur.com/pFol6LX.png">
+
+<img src = "https://i.imgur.com/pFol6LX.png">    
+
 * `docker-compose run` cho phép ta chạy 1 lần nhiều câu lệnh cho các services. Ví dụ để thấy các environment variables trên web service:  
 `$ docker-compose run web env`
+
 <img src = "https://i.imgur.com/rRwL2bb.png">
+
 * `docker-compose --help` để xem các câu lệnh có sẵn khác.
+
 <img src = "https://i.imgur.com/TezAZDC.png">
+
 * `docker-compose ps` hiển thị các service 
+
 <img src = "https://i.imgur.com/7LrOJ4s.png">
+
 * `docker-compose stop` để dừng các service
+
 <img src = "https://i.imgur.com/Car1Cdz.png">
+
 * `docker-compose build` để build hoặc re-build các service 
+
 <img src = "https://i.imgur.com/PTX3ESo.png">
+
 * `docker-compose config` xác nhận hoặc hiện thị config
+
 <img src = "https://i.imgur.com/vXkS3t6.png">
 
 
