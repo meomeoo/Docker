@@ -38,8 +38,11 @@
 # Những lệnh Docker-compose cơ bản:
 
 Ví dụ ta có một folder như trong hình:
+
 <img src = "https://i.imgur.com/XMcpvsv.png">
+
 với file yml để thiết lập các service như hình: 
+
 <img src = "https://i.imgur.com/Yqr87t0.png">
 
 
