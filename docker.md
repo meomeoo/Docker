@@ -1,5 +1,5 @@
 
-# Vấn đề mà Docker giải quyết
+# Vấn đề mà Docker giải quyết 
 * Sử dụng và cài đặt phần mềm là một vấn đề phức tập: ứng dựng hoạt động trên hệ điều nào, tài nguyên mà nó yêu cầu, các dụng khác mà nó phụ thuộc vào,..   
 Ngày nay một ứng dụng không chỉ hoạt động riêng lẻ riêng mình nó mà nó còn cần nhiều thứ phụ thuộc đi kèm. Vì vậy trên một máy tính việc sử dụng, cài đặt, nâng cấp một phần mềm sẽ là một vấn đề phức tạp và rắc rối.   
 <img src="https://i.imgur.com/j5UAM6t.png">
@@ -61,7 +61,7 @@ Chạy và đặt tên (tên container là 'hihi') một container dựa trên i
 <img src="https://i.imgur.com/Xg881kR.png">  
 `docker logs hihi 2>&1 | grep GENERATED`   
 Nhận mật khẩu mặc định cho root user   
-`sudo docker exec -it hihi mysql -uroot -p`   
+`sudo docker exec -it hihi mysql -uroot -p`    
 Kết nối tới mysql server từ bên trong container chứa nó. Cụ thể là di chuyển đến mysql client.    
 `mysql> ALTER USER 'root'@'localhost' IDENTIFIED BY 'conmeocon';`  
 Thay đổi mật khẩu cho root user   
