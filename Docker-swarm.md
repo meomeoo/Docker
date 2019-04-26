@@ -111,7 +111,7 @@ Khi chạy service có các container, mà các container hoạt động là đ�
 
 <img src = "https://docs.docker.com/engine/swarm/images/services-diagram.png">
 
-* Task:
+### Task:
 
 Mỗi task đi liền với chính xác một container của các service, là thứ để nhận biết các container trong Swarm, nếu một task chết - tương đương với việc container đi với nó chết khi đó task và container tương ứng bị xóa để tạo task với container mới thay thế sao cho phù hợp với cấu hình mong muốn của service .
 
@@ -123,7 +123,7 @@ Task đi qua một số trạng thái theo thứ tự sau:
 
 <img src = "https://i.imgur.com/izzrSaA.png">
 
-* Pending services
+### Pending services
 
 Cấu hình được cài đặt cho các service có thể được trển khai khi mà các node trong Swarm không có hoặc không đủ tài nguyên để thực hiện khi đó service như vậy sẽ ở thái chờ
 Ví dụ một số trường hợp các service có thể ở trạng thái chờ:
@@ -133,9 +133,11 @@ Ví dụ một số trường hợp các service có thể ở trạng thái ch�
 
 Bạn chỉ cần cung cấp cấu hình mà mình mong muốn, node-manager sẽ tự động điều phối sự hoạt động của các task, bận không cần quan tâm đến việc cài đặt cấu hình về sự hoạt động của từng task trên Swarm.
 
-  * Replicated and global services
-    * Replicated: Chúng ta sẽ định cấu hình chính xác số task bạn muốn chạy và node-manager sẽ thực hiện điều đó
-    * Global: Đó là một service mà đảm bảo việc sẽ chạy một task (được chỉ định cụ thể  - với khả năng đặc biệt nào đó) của nó trên mọi node của swarm (khi đó bạn không cần chỉ định chính xác số task muốn chạy) 
+### Replicated and global services
+
+* Replicated: Chúng ta sẽ định cấu hình chính xác số task bạn muốn chạy và node-manager sẽ thực hiện điều đó
+
+* Global: Đó là một service mà đảm bảo việc sẽ chạy một task (được chỉ định cụ thể  - với khả năng đặc biệt nào đó) của nó trên mọi node của swarm (khi đó bạn không cần chỉ định chính xác số task muốn chạy) 
  Khi một node mới được thêm vào cluster node-manager sẽ thực hiện điều phối và tự động thêm task được chỉ định sẵn vào node mới
  Ví dụ: Task có chức năng hiện thị trạng thái của node, task có chức năng quyét virut,...
 
