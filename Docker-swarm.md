@@ -4,18 +4,20 @@
 
 * Thông thường docker-images được lưu dưới dạng read-only layers, khi ta bắt đầu chạy một container docker sẽ thêm một read-write layer phía trên read-only layer. 
 
+<img src = "https://i.imgur.com/nJCV3sd.png">
+
 * Khi container chạy và thay đổi bất cứ file nào có sẵn ở lớp image, file sẽ được copy lên read-write layer để thực hiện các thay đổi (chỉ tồn tải khi container đang chạy). Khi container bị xóa sự thay đổi các file sẽ mất, các file nguyên bản ở read-only layer vẫn tồn tại, không thay đổi.
 
 =>>> Không lưu trữ được giữ liệu bị thay đổi.
 
-=>>>>>>> Volume sinh ra để giải quyết vấn đề này, Nhằm có thể lưu trữ những file bị thay đổi ngay cả khi container bị xóa, có thể dùng để chia sẻ tài nguyên giữa các node
+=>>>>>>> Volume sinh ra để giải quyết vấn đề này, Nhằm có thể lưu trữ những file bị thay đổi ngay cả khi container bị xóa, có thể dùng để chia sẻ tài nguyên giữa các node  
+
 Các làm: 
 * Tạo một volume (là một thư mục thực) ở trong máy chủ
 * Ánh xạ trực tiếp thư mục đó với /data ở trong container
 
- * Một số cách để tạo volume và kết nối nó với container
-1. 
-Tạo khi thực hiện câu lệnh run (dùng để chạy container)
+### Một số cách để tạo volume và kết nối nó với container
+1.  Tạo khi thực hiện câu lệnh run (dùng để chạy container)
 `$ docker run -it --name vol-test -h CONTAINER -v /data debian /bin/bash`
 <img src = "https://i.imgur.com/ujt47ct.png">
 
@@ -87,11 +89,11 @@ Swarm là chế độ hoạt động mà một nhóm các máy tính chạy Dock
 <img src = "https://docs.docker.com/engine/swarm/images/swarm-diagram.png"> 
 
 * Thuật toán Raft gồm 2 tiến trình:
- * Leader election: 
-    Chọn một node mới làm Leader sau khi một Node-Leader bị chết 
-    Nếu ta có một nhóm có N node quá trình chọn node-Leader vẫn có thể xảy ra khi mất tối đa là (N-1)/2 node
- * Log replication
-    Đảm bảo log của node-leader giống với log của các node còn lại (còn hoạt động)
+  * Leader election: 
+     Chọn một node mới làm Leader sau khi một Node-Leader bị chết 
+     Nếu ta có một nhóm có N node quá trình chọn node-Leader vẫn có thể xảy ra khi mất tối đa là (N-1)/2 node
+  * Log replication
+     Đảm bảo log của node-leader giống với log của các node còn lại (còn hoạt động)
 
 * Việc sử dụng thuật toán Raft trên nhiều node-manager:
   * Giữa các node-manager sẽ có một node-manager làm leader, log của leader sẽ có nhiệm vụ ghi lại mọi hoạt động được thự hiện trong cluster 
@@ -103,32 +105,37 @@ Swarm là chế độ hoạt động mà một nhóm các máy tính chạy Dock
 
 * Docker-swarm là nơi ta triển khai các app-serviecs của mình, các service sẽ được định cấu hình ví dụ: Thông qua file YML 
 
-Khi được triển khai, Swarm-manger nhận những định hình của services và lên kế hoạch hoạt động cho các service trên các node và thực hiện chạy chực tiếp các task trên các node. 
+Khi được triển khai, Swarm-manger nhận những định hình của services và lên kế hoạch hoạt động cho các service trên các node và thực hiện chạy chực tiếp các task trên các node.   
+
 Khi chạy service có các container, mà các container hoạt động là độc lập nên cần có tasks (gắn với từng container) để thể hiện sự liên quan của các container với service (giống như nhãn định danh).
 
 <img src = "https://docs.docker.com/engine/swarm/images/services-diagram.png">
 
 * Task:
 
-Mỗi task đi liền với chính xác một container của các service, là thứ để nhận biết các container trong Swarm, nếu một task chết - tương đương với việc container đi với nó chết khi đó task và container tương ứng bị xóa để tạo task với container mới thay thế sao cho phù hợp với cấu hình mong muốn của service 
+Mỗi task đi liền với chính xác một container của các service, là thứ để nhận biết các container trong Swarm, nếu một task chết - tương đương với việc container đi với nó chết khi đó task và container tương ứng bị xóa để tạo task với container mới thay thế sao cho phù hợp với cấu hình mong muốn của service .
+
 Khai một task stop thì nó sẽ bị xóa chứ không có chuyện được chạy lại.
+
 Task có những trạng thái của từ khi được tạo cho đến khi hoàn thành hoặc kết thúc. Sẽ theo một số thự tự trạng thái nhất định. Ví dụ: Không có chuyện task đi từ trạng thái `COMPLETE` sau đó đến `RUNNING`
+
 Task đi qua một số trạng thái theo thứ tự sau: 
+
 <img src = "https://i.imgur.com/izzrSaA.png">
 
 * Pending services
 
 Cấu hình được cài đặt cho các service có thể được trển khai khi mà các node trong Swarm không có hoặc không đủ tài nguyên để thực hiện khi đó service như vậy sẽ ở thái chờ
 Ví dụ một số trường hợp các service có thể ở trạng thái chờ:
- * Tất cả các node của Swarm đang ở trạng thái dừng,.. như vậy service sẽ ở trạng thái chờ cho đến khi các nút có thể hoạt động được, trong thực tế khi node đầu tiên khả thi để hoạt động, tất cả các task sẽ hoạt động trên đó ==>>> không ổn trong môi trường triển khai
- * Bạn cần một lượng tài nguyên cụ thể để lưu dữ liệu cho một service, nếu không một node có đủ tài nguyên cho bộ nhớ cần thiết service sẻ ở trạng thái chờ cho đến khi có một node khả thi cho việc lưu trữ 
- * Một service bạn có thêm ràng buộc về vị trí hoạt động của nó nhưng swarm chưa thể đáp ứng điều đó =>> Service sẽ ở trạng thái chờ xử lí 
+  * Tất cả các node của Swarm đang ở trạng thái dừng,.. như vậy service sẽ ở trạng thái chờ cho đến khi các nút có thể hoạt động được, trong thực tế khi node đầu tiên khả thi để hoạt động, tất cả các task sẽ hoạt động trên đó ==>>> không ổn trong môi trường triển khai
+  * Bạn cần một lượng tài nguyên cụ thể để lưu dữ liệu cho một service, nếu không một node có đủ tài nguyên cho bộ nhớ cần thiết service sẻ ở trạng thái chờ cho đến khi có một node khả thi cho việc lưu trữ 
+  * Một service bạn có thêm ràng buộc về vị trí hoạt động của nó nhưng swarm chưa thể đáp ứng điều đó =>> Service sẽ ở trạng thái chờ xử lí 
 
 Bạn chỉ cần cung cấp cấu hình mà mình mong muốn, node-manager sẽ tự động điều phối sự hoạt động của các task, bận không cần quan tâm đến việc cài đặt cấu hình về sự hoạt động của từng task trên Swarm.
 
-* Replicated and global services
- * Replicated: Chúng ta sẽ định cấu hình chính xác số task bạn muốn chạy và node-manager sẽ thực hiện điều đó
- * Global: Đó là một service mà đảm bảo việc sẽ chạy một task (được chỉ định cụ thể  - với khả năng đặc biệt nào đó) của nó trên mọi node của swarm (khi đó bạn không cần chỉ định chính xác số task muốn chạy) 
+  * Replicated and global services
+    * Replicated: Chúng ta sẽ định cấu hình chính xác số task bạn muốn chạy và node-manager sẽ thực hiện điều đó
+    * Global: Đó là một service mà đảm bảo việc sẽ chạy một task (được chỉ định cụ thể  - với khả năng đặc biệt nào đó) của nó trên mọi node của swarm (khi đó bạn không cần chỉ định chính xác số task muốn chạy) 
  Khi một node mới được thêm vào cluster node-manager sẽ thực hiện điều phối và tự động thêm task được chỉ định sẵn vào node mới
  Ví dụ: Task có chức năng hiện thị trạng thái của node, task có chức năng quyét virut,...
 
@@ -153,34 +160,50 @@ Tạo 2 máy ảo với 2 câu lệnh
 <img src = "https://i.imgur.com/jH1SBB2.png">
 
 Tạo swarm bằng cách chạy `docker swarm init` trên máy bạn muốn mà máy đó là node-manager 
+
 `docker-machine ssh myvm1 "docker swarm init --advertise-addr <myvm1 ip>" `
+
 `docker-machine ssh ` Dùng khi bạn muốn chạy câu lệnh trên máy nào trên shell của máy chủ hiện tại
 
 <img src = "https://i.imgur.com/XJtOov0.png">
 
 Thêm một máy vào Swarm với việc chạy câu lệnh `docker swarm join` trên máy mà bạn muốn join vào .
+
 <img src = "https://i.imgur.com/DfE0Ec5.png">
 
 Chạy `docker node ls` trên máy manager để xem các node có trong sluster 
+
 <img src = "https://i.imgur.com/1DPbNen.png">
 
 Để rời một node khỏi cluster chạy `docker swarm leave` trên node đó 
+
 <img src = "https://i.imgur.com/k8ocG4W.png">
 
 Trước tiên chạy 2 lệnh  
 `docker-machine env myvm1`
 `eval $(docker-machine env myvm1)`
+
 Khi đó sell trên máy hiện tại sẽ hiểu là lệnh được chạy trên máy myvm1 và vẫn truy cập được vào file trên máy local 
+
 Để triển khai một app trên cluster ta chạy lệnh `docker stack deploy` trên node-manager dùng compose file 
+
 <img src = "https://i.imgur.com/u5oM2LV.png">
 
+
 Để xem các các task của stack  
+
 `docker stack ps getstartedlab`
+
 <img src = "https://i.imgur.com/tuDfpXf.png" >
+
 Dùng `docker node inspect <NODE-ID>` trên node-manager để xem thông tin chi tiết một node 
+
 Thêm cờ `--pretty` để thông tin ở dạng ta có thể đọc được 
+
 <img src = "https://i.imgur.com/sMSKdmE.png">
+
 Để xem join token chạy `docker swarm join-token -q worker  ` trên node-manager 
+
 <img src = "https://i.imgur.com/6JSgpX5.png">
 
 
