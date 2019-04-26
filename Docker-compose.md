@@ -35,6 +35,7 @@
   * Kiểm tra trạng tháng của các service khi đang chạy
   * Tạo các service độc lập giống với thực tế triển khai sản phẩm (thực tế các service sẽ chạy trên các máy chủ khác nhau) chỉ trên một máy local
 
+
 # Những lệnh Docker-compose cơ bản:
 
 Ví dụ ta có một folder như trong hình:
