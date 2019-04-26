@@ -1,5 +1,6 @@
 # khái niệm bổ sung thêm
-## docker-volum 
+
+## Docker-volum 
 
 * Thông thường docker-images được lưu dưới dạng read-only layers, khi ta bắt đầu chạy một container docker sẽ thêm một read-write layer phía trên read-only layer. 
 
@@ -20,7 +21,7 @@ Tạo khi thực hiện câu lệnh run (dùng để chạy container)
 
 Ta có thể xem vị trí volume trong máy chủ với câu lệnh:
 `$ docker inspect -f "{{json .Mounts}}" vol-test | jq .`
-<img src = "https://i.imgur.com/re90F4F.png>
+<img src = "https://i.imgur.com/re90F4F.png">
 
 Tạo một file mới vào trong volume trực tiếp bằng host         
 
@@ -54,27 +55,31 @@ Những directory được đắt sau thẻ `-v` (như  trong trường hợp tr
 
 
 # Docker-swarm 
+
 Swarm là chế độ hoạt động mà một nhóm các máy tính chạy Docker (vật lý hoặc máy ảo) tham gia vào cluster có kết nối với nhau. Đơn giản chế độ Docker-Swarm cung cấp một môi trường chung chạy Docker với nhiều tài nguyên hơn phục vụ cho việc đó và với một số tính năng tự động như: Điều phối hoạt động của tasks, theo dõi trạng thái hoạt động của tasks,...
 
 <img src = "https://image.slidesharecdn.com/docker-swarm-mike-goelzer-mv-meetup-45min-workshop022420161-160228024416/95/docker-swarm-docker-native-clustering-5-638.jpg?cb=1456856097">
 
-##Node
+
+## Node
+
 * Mỗi một máy tính chạy Docker engine (Ảo hoặc vật lí) trong cluster được gọi là một node của Swarm, có 2 loại node trong Swarm đó là: Node-manager và Node-worker. Trước tiên ta sẽ phải định nghĩa một máy tính là node-manager sau đó ta sẽ join các máy tính khác vào cluster mà node-manager quản lí các máy đó gọi là node-woker
 
- * Node-manager:
+* Node-manager:
   * Là máy tính duy nhất trong swarm để chạy các lệnh Docker 
   * Xác định chiến lược chạy các container trong swarm:
-   * Emptiest node: Lấp đầy container với các node ít hoạt động  
-   * Global: Mỗi node sẽ chắc chắn chạy một container nào đó được chỉ định
+    * Emptiest node: Lấp đầy container với các node ít hoạt động  
+    * Global: Mỗi node sẽ chắc chắn chạy một container nào đó được chỉ định
   * Phối hợp, giao nhiệm vụ và tự động điều phối hoạt động của các node-worker đề duy trì cấu hình mong muốn của người sử dụng
   * Hoạt động như một Worker 
- * Node-Worker:
+* Node-Worker:
   * Có nhiệm vụ duy nhất là cung cấp tài nguyên cho việc chạy Docker trong cluster (Bảo gì làm đấy)
   * Nhận và thực hiện công việc được giao từ node-manager
   * Thông báo trạng thái thực tế của các task cho node-manager để  node-manager thực hiện những xử lí thích hợp
 
-#Một số cơ chế hoạt động của Swarm 
-##Raft consensus in swarm mode
+# Một số cơ chế hoạt động của Swarm 
+
+## Raft consensus in swarm mode
 
 - Chạy chế độ Docker-swarm với một node-manager duy nhất với mục địch kiểm thử là chấp nhận được, những khi triển khai ở hệ thống lớn hơn nếu một node-manager duy nhất bị chết các node-worker vẫn hoạt động mà không có sự giám sát hay điều phối từ node-manager ==>> khi đó ta sẽ lại phải tạo lại cluster.
 
