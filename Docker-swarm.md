@@ -1,60 +1,3 @@
-# khái niệm bổ sung thêm
-
-## Docker-volum 
-
-* Thông thường docker-images được lưu dưới dạng read-only layers, khi ta bắt đầu chạy một container docker sẽ thêm một read-write layer phía trên read-only layer. 
-
-<img src = "https://i.imgur.com/nJCV3sd.png">
-
-* Khi container chạy và thay đổi bất cứ file nào có sẵn ở lớp image, file sẽ được copy lên read-write layer để thực hiện các thay đổi (chỉ tồn tải khi container đang chạy). Khi container bị xóa sự thay đổi các file sẽ mất, các file nguyên bản ở read-only layer vẫn tồn tại, không thay đổi.
-
-=>>> Không lưu trữ được giữ liệu bị thay đổi.
-
-=>>>>>>> Volume sinh ra để giải quyết vấn đề này, Nhằm có thể lưu trữ những file bị thay đổi ngay cả khi container bị xóa, có thể dùng để chia sẻ tài nguyên giữa các node  
-
-Các làm: 
-* Tạo một volume (là một thư mục thực) ở trong máy chủ
-* Ánh xạ trực tiếp thư mục đó với /data ở trong container
-
-### Một số cách để tạo volume và kết nối nó với container
-1.  Tạo khi thực hiện câu lệnh run (dùng để chạy container)
-`$ docker run -it --name vol-test -h CONTAINER -v /data debian /bin/bash`
-<img src = "https://i.imgur.com/ujt47ct.png">
-
-Ta có thể xem vị trí volume trong máy chủ với câu lệnh:
-`$ docker inspect -f "{{json .Mounts}}" vol-test | jq .`
-<img src = "https://i.imgur.com/re90F4F.png">
-
-Tạo một file mới vào trong volume trực tiếp bằng host         
-
-`sudo touch /var/lib/docker/volumes/f3891e09e21cf69b5916ab552ff8c7926b9b02a092bb68dc3f4042e93dd8e134/_data/test-file`
-
-Và lập tức được ánh xạ vào /data trong container 
-<img src = "https://i.imgur.com/0XzF1Mf.png">
-
-2.  Ta cũng có thể tạo volume bằng cách sử dụng VOLUME trong Dokerfile
-<img src = "https://i.imgur.com/1POP8N1.png">
-
-3. 
-Tạo volume bằng `docker volume`
-
-`$ docker volume create --name my-vol`
-<img src = "https://i.imgur.com/LgVKDXf.png">
-
-Mount volume vừa tạo với container sẽ chạy
-`docker run -d -v my-vol:/data debian`
-<img src = "https://i.imgur.com/TJIpYyQ.png">
-
-4. 
-Ta mount một foder cụ thể trong máy chủ với container sử dụng thẻ `v`
-`docker run -v /home/adrian/data:/data debian ls /data`
-
-/home/adrian/data trong host sẽ được mount tới \data trong container
-
-`docker run -v /home/hoc/data:/data debian ls /data`
-Việc này hữu ích cho việc các container cùng chia sẻ file 
-Những directory được đắt sau thẻ `-v` (như  trong trường hợp trên) sẽ không chịu sự quản lí của Docker, không thể bị xóa bởi docker-daemon  
-
 
 # Docker-swarm 
 
@@ -144,12 +87,16 @@ Bạn chỉ cần cung cấp cấu hình mà mình mong muốn, node-manager s�
 ## Phân biệt Docker-swarm và Docker-compose
 * Docker-compose giúp ta chạy toàn bộ một app với một câu lệnh một cách dễ dàng thông qua Docker-compose file     chỉ trên một máy tính  ==>> không phù hợp nếu tài nguyên của máy không đáp ứng đủ tài nguyên cần sử dụng
   Phù hợp dùng để test 
+
   Phù hợp sử dụng trong giai đoạn phát triển một sản phẩm
   
 * Docker-swarm là một chế độ mà cung cấp một môi trường chạy Docker với nhiều tài nguyên (trên nhiều máy khác nhau) với nhiều cơ chế hay tính năng tự động để đảo bảo duy trì những config mong muốn được cài đặt sẵn 
+
   Docker-swarm là chế độ giúp triển khai các service trong file YML trên nhiều máy : Hữu ích trong cả việc test và triển khai 
+
   Phù hợp với một app cần nhiều tài nguyên máy tính ( Có thể thêm node-woker để có thêm tài nguyên)
-  Phù hợp ở gia đoạn triển khai một sản phẩm đã hoàn chỉnh với nhiều cơ chế để duy trì nếu hợp lỗi
+
+  Phù hợp ở gia đoạn triển khai một sản phẩm đã hoàn chỉnh với nhiều cơ chế để duy trì nếu gặp lỗi
   
 
 
@@ -207,6 +154,62 @@ Thêm cờ `--pretty` để thông tin ở dạng ta có thể đọc được
 Để xem join token chạy `docker swarm join-token -q worker  ` trên node-manager 
 
 <img src = "https://i.imgur.com/6JSgpX5.png">
+
+
+# khái niệm bổ sung thêm
+
+## Docker-volum 
+
+* Thông thường docker-images được lưu dưới dạng read-only layers, khi ta bắt đầu chạy một container docker sẽ thêm một read-write layer phía trên read-only layer. 
+
+<img src = "https://i.imgur.com/nJCV3sd.png">
+
+* Khi container chạy và thay đổi bất cứ file nào có sẵn ở lớp image, file sẽ được copy lên read-write layer để thực hiện các thay đổi (chỉ tồn tải khi container đang chạy). Khi container bị xóa sự thay đổi các file sẽ mất, các file nguyên bản ở read-only layer vẫn tồn tại, không thay đổi.
+
+=>>> Không lưu trữ được giữ liệu bị thay đổi.
+
+=>>>>>>> Volume sinh ra để giải quyết vấn đề này, Nhằm có thể lưu trữ những file bị thay đổi ngay cả khi container bị xóa, có thể dùng để chia sẻ tài nguyên giữa các node  
+
+Các làm: 
+* Tạo một volume (là một thư mục thực) ở trong máy chủ
+* Ánh xạ trực tiếp thư mục đó với /data ở trong container
+
+### Một số cách để tạo volume và kết nối nó với container
+1.  Tạo khi thực hiện câu lệnh run (dùng để chạy container)
+`$ docker run -it --name vol-test -h CONTAINER -v /data debian /bin/bash`
+<img src = "https://i.imgur.com/ujt47ct.png">
+
+Ta có thể xem vị trí volume trong máy chủ với câu lệnh:
+`$ docker inspect -f "{{json .Mounts}}" vol-test | jq .`
+<img src = "https://i.imgur.com/re90F4F.png">
+
+Tạo một file mới vào trong volume trực tiếp bằng host         
+
+`sudo touch /var/lib/docker/volumes/f3891e09e21cf69b5916ab552ff8c7926b9b02a092bb68dc3f4042e93dd8e134/_data/test-file`
+
+Và lập tức được ánh xạ vào /data trong container 
+<img src = "https://i.imgur.com/0XzF1Mf.png">
+
+2.  Ta cũng có thể tạo volume bằng cách sử dụng VOLUME trong Dokerfile
+<img src = "https://i.imgur.com/1POP8N1.png">
+
+3. Tạo volume bằng `docker volume`
+
+`$ docker volume create --name my-vol`
+<img src = "https://i.imgur.com/LgVKDXf.png">
+
+Mount volume vừa tạo với container sẽ chạy
+`docker run -d -v my-vol:/data debian`
+<img src = "https://i.imgur.com/TJIpYyQ.png">
+
+4. Ta mount một foder cụ thể trong máy chủ với container sử dụng thẻ `v`
+`docker run -v /home/adrian/data:/data debian ls /data`
+
+/home/adrian/data trong host sẽ được mount tới \data trong container
+
+`docker run -v /home/hoc/data:/data debian ls /data`
+Việc này hữu ích cho việc các container cùng chia sẻ file 
+Những directory được đắt sau thẻ `-v` (như  trong trường hợp trên) sẽ không chịu sự quản lí của Docker, không thể bị xóa bởi docker-daemon  
 
 
 
