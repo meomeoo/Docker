@@ -58,9 +58,9 @@ Khi chạy service có các container, mà các container hoạt động là đ�
 
 Mỗi task đi liền với chính xác một container của các service, là thứ để nhận biết các container trong Swarm, nếu một task chết - tương đương với việc container đi với nó chết khi đó task và container tương ứng bị xóa để tạo task với container mới thay thế sao cho phù hợp với cấu hình mong muốn của service .
 
-Khai một task stop thì nó sẽ bị xóa chứ không có chuyện được chạy lại.
+Khi một task stop thì nó sẽ bị xóa chứ không có chuyện được chạy lại. 
 
-Task có những trạng thái của từ khi được tạo cho đến khi hoàn thành hoặc kết thúc. Sẽ theo một số thự tự trạng thái nhất định. Ví dụ: Không có chuyện task đi từ trạng thái `COMPLETE` sau đó đến `RUNNING`
+Task có những trạng thái từ khi được tạo cho đến khi hoàn thành hoặc kết thúc. Sẽ theo một số thự tự trạng thái nhất định. Ví dụ: Không có chuyện task đi từ trạng thái `COMPLETE` sau đó đến `RUNNING`
 
 Task đi qua một số trạng thái theo thứ tự sau: 
 
